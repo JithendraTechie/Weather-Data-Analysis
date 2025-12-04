@@ -1,75 +1,236 @@
-# Data_Analysis_on_Weather_Dataset
-Data Analysis on Weather Dataset using Python
-<!DOCTYPE html>
-<html>
+# **Weather Data Analysis using Python**
 
-<body>
-<h2>Introduction</h2>
-<p>Data Analysis is one major part that you must master before learning or diving into the machine learning algorithms section because data analysis is a process to explore the data to get a better understanding of data.</p>
-<h2>Dataset Overview</h2>
-<p>The dataset we will use is a simple weather dataset which is a time-series dataset that stores the temperature, humidity, wind speed, etc on an hourly basis on different dates in 2012Load Dataset.</p>
-<h2>Load Dataset</h2>
-<p>You have the dataset and open the Jupyter Notebook or you can also create a Kaggle notebook over there itself. The first step is to import the necessary libraries and load the dataset into a notebook.</p>
-<h2>Basic Python Pandas Data Analysis Functions</h2>
-<h3>1. Shape</h3>
+### **Exploratory Data Analysis (EDA) | Feature Engineering | Time-Series Trends | Visual Insights**
 
-  ```bash
- data.shape
+This project analyzes historical hourly weather data to uncover **seasonal patterns**, **temperature behavior**, **visibility changes**, and **frequencies of major weather events** such as fog, rain, snow, and storms.
+It demonstrates end-to-end data analyst skills including **data cleaning**, **preprocessing**, **feature engineering**, **visualization**, and **insight generation**.
+
+---
+
+## 📌 **Project Objectives**
+
+* Clean and preprocess raw weather data
+* Handle missing values and detect outliers
+* Perform EDA using Python
+* Engineer new features such as:
+
+  * Year, Month, Day, Hour
+  * Weekday
+  * Temperature in Fahrenheit
+  * Weather Category
+* Analyze seasonal temperature patterns
+* Visualize distribution and frequency of weather events
+* Generate insights useful for forecasting or reporting
+
+---
+
+## 🧰 **Technologies Used**
+
+* **Python**
+* **Pandas**
+* **NumPy**
+* **Matplotlib**
+* **Seaborn**
+* **Jupyter Notebook**
+* **Power BI (Optional)**
+
+---
+
+## 📂 **Project Structure**
+
 ```
-  <h3>2. Data types</h3>
-  
-  ```bash
- data.dtypes
+Weather-Data-Analysis/
+│── 1. Weather Data.csv                   # Raw dataset
+│── weather_data_analysis.ipynb           # Main analysis notebook (with summary)
+│── Weather_Data_Analysis_Dashboard.pbix  # Power BI dashboard
+│── README.md                             # Project documentation
+│── venv/                                 # Virtual environment (ignored in repo)
 ```
 
-<h3>3. Unique </h3>
-  
-   ```bash
- data['Weather'].unique()
-```
-  
-<h3>4. Count</h3>
-  
-   ```bash
- data.count()
-```
-  
-<h3>5. Value counts</h3>
-  
-   ```bash
- data['Weather'].value_counts()
-```
-  
-<h3>6.information</h3>
-  
-   ```bash
- data.info
-```
-  
-<h3>7.Describe</h3>
-  
-   ```bash
-data.describe()
-```
-  <br><br>
-<h2>Answering Different Data Analysis Problems</h2>
-<h3>Q1)To check if there are null values and drop them</h3>
-<h3>Q2) To find unique instances of weather types</h3>
-<h3>Q3) To rename column named 'Weather' to Weather Condition'</h3>
-<h3>Q4)To find all records from data of when the weather was exactly clear ?</h3>
-<h3>Q5)To find the mean temperature, wind speed and visibility?</h3>
-<h3></h3>
-<h3>Q6)To find the variance of pressure ?</h3>
-<h3>Q7) To Find the Days in which wind speed was more then 30km/h & temperature is greater then 0C?</h3>
-<h3>Q8) To find the date and temperatures for all instances when snow was recorded</h3>
-<h3>Q9) To display a graph of variation of temperature with respect to time ?</h3>
-<h3>Q10) To display a pie chart of percentages of weather conditions (pie chart)</h3>
-<br><br>
-<h2>Conclusion</h2>
-<p>Data analysis is a continuous process that represents how deep and better you represent your analysis to the client so the insights that can be used to drive business decisions are understandable.</p>
+---
 
-</body>
-</html>
+## 🔧 **Data Cleaning & Preprocessing**
 
-## References
-- [Kaggle.com](https://www.kaggle.com)
+Steps performed:
+
+* Converted **Date/Time** into Pandas datetime format
+* Checked missing values and applied **forward fill (ffill)**
+* Handled outliers using **Z-Score**
+* Created new useful columns:
+
+  * `Year`, `Month`, `Day`, `Hour`
+  * `Weekday`
+  * `Temp_F` (°C → °F)
+  * `Weather_Category` (Fog, Rain, Snow, Cloudy, Clear, etc.)
+
+---
+
+## 📊 **Key Visualizations**
+
+* Temperature distributions
+* Boxplots for detecting outliers
+* Weather Category Frequency Heatmap
+* Monthly Temperature Trend line chart
+* Correlation heatmap of all numerical variables
+
+---
+
+## 🧠 **Insights Generated**
+
+* **Temperature peaks** around **July–August** and reaches the lowest around **January**.
+* **Visibility drops sharply** during foggy months (especially winter).
+* **Snowfall frequency** is highest between **December–February**.
+* **Clear weather** dominates summer months, while **fog** dominates winter.
+* Rain and snow show strong **seasonal patterns**, supporting predictive forecasting.
+
+---
+
+## 📝 **How to Run the Project**
+
+### **1) Clone the repository**
+
+```bash
+git clone https://github.com/JithendraTechie/Weather-Data-Analysis.git
+```
+
+### **2) Install dependencies**
+
+```bash
+pip install pandas numpy matplotlib seaborn scipy jupyter
+```
+
+### **3) Run Jupyter Notebook**
+
+```bash
+jupyter notebook
+```
+
+Open:
+`weather_data_analysis.ipynb`
+
+---
+
+## 📈 **Power BI Dashboard (Optional)**
+
+Data Transformation in Power BI
+
+After loading clean_weather_data.csv into Power BI:
+
+1️⃣ Promoted Headers
+
+Convert first row to headers.
+
+2️⃣ Corrected Data Types
+
+Date/Time → datetime
+
+All numeric columns → decimal number
+
+Weather → text
+
+3️⃣ Added DAX Columns
+Month Name
+MonthName = FORMAT(WeatherData[Date_Time], "MMMM")
+
+Month Number
+MonthNumber = MONTH(WeatherData[Date_Time])
+
+Sort MonthName by MonthNumber
+
+Power BI → Column tools → Sort by Column → MonthNumber
+
+📈 Step 3 – Power BI Dashboard
+✔ Dashboard Components
+🔹 KPI Cards
+
+Average Temperature (°C)
+
+Average Relative Humidity (%)
+
+Average Visibility (km)
+
+Total Records
+
+🔹 Line Charts
+
+Average Temperature by Month
+
+Average Humidity by Month
+
+Average Visibility by Month
+
+Average Pressure by Month
+
+🔹 Donut Chart
+
+Distribution of Weather Types
+
+🔹 Slicers
+
+Month Name
+
+Weather Type
+
+📌 Step 4 – Insights & Interpretation
+🌡 Temperature
+
+Average temperature: 8.8°C
+
+Warmest months: July & August
+
+Coldest months: January & February
+
+💧 Humidity
+
+Peaks during June–August
+
+Drops sharply in October
+
+👁 Visibility
+
+Lowest in winter months (fog)
+
+Highest in summer
+
+🌬 Pressure
+
+Highest in December
+
+Lowest during mid-year
+
+🌦 Weather Types
+
+Mostly Mainly Clear, Mostly Cloudy, and Cloudy
+
+Fog accounts for ~4% → impacts visibility in January
+
+Open Power BI File
+Weather_Data_Analysis_Dashboard.pbix
+
+Interact with Dashboard
+
+Use slicers to filter by:
+
+Month
+
+Weather
+
+---
+
+## 🚀 **What This Project Demonstrates (Resume Points)**
+
+* Performed **end-to-end EDA on 8,700+ hourly weather records**
+* Engineered multiple time-series features using Python
+* Identified patterns in **temperature, humidity, pressure, and visibility**
+* Created visual insights for **seasonal forecasting**
+* Built a **Power BI dashboard** for business-ready presentation
+
+---
+
+## 📬 **Contact**
+
+If you'd like to collaborate or have feedback, connect with me on GitHub.
+
+https://github.com/JithendraTechie
+
+---
